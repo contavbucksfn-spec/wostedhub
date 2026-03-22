@@ -5976,12 +5976,14 @@ task.spawn(function()
 								if c:IsA("Attachment") or c:IsA("Beam") then c:Destroy() end
 							end
 						end
-						local rotAngle = _G.InvisStealAngle or 180
-						local sa = (_G.SinkSliderValue or 5) * 0.5
-						local cf = root.CFrame - Vector3.new(0, sa, 0)
-						oldRoot.CFrame = cf * CFrame.Angles(math.rad(rotAngle), 0, 0)
-						oldRoot.AssemblyLinearVelocity = root.AssemblyLinearVelocity; oldRoot.CanCollide = false
-						lastSetPosition = oldRoot.Position
+						if oldRoot then
+							local rotAngle = _G.InvisStealAngle or 180
+							local sa = (_G.SinkSliderValue or 5) * 0.5
+							local cf = root.CFrame - Vector3.new(0, sa, 0)
+							oldRoot.CFrame = cf * CFrame.Angles(math.rad(rotAngle), 0, 0)
+							oldRoot.AssemblyLinearVelocity = root.AssemblyLinearVelocity; oldRoot.CanCollide = false
+							lastSetPosition = oldRoot.Position
+						end
 					end
 				end
 			end)
